@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab Visibility Test</title>
+</head>
+<body>
+    <h1>Switch to another tab to see a message in the console.</h1>
+    <p>Check your browser's developer console (F12 or Ctrl+Shift+I).</p>
+
+    <script>
+        // Listen for the 'visibilitychange' event on the document
+        document.addEventListener('visibilitychange', () => {
+            // The document.visibilityState property tells you the current state.
+            // It can be 'visible', 'hidden', 'prerender', or 'unloaded'.
+
+            if (document.visibilityState === 'hidden') {
+                // This is where you run your code when the tab becomes hidden.
+                console.log('TAB IS NOT ACTIVE! Printing this message.');
+
+                // You can also do other things, like changing the page title
+                document.title = 'Come Back!';
+            } else if (document.visibilityState === 'visible') {
+                // This code runs when the user comes back to the tab.
+                console.log('Welcome back to the tab!');
+                document.title = 'Tab Visibility Test'; // Change it back
+            }
+        });
+    </script>
+</body>
+</html>
